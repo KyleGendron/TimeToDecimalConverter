@@ -7,7 +7,7 @@ import com.voice.app.TimeToDecimalConverter.controller.MasterController;
 /**
  *
  *Top level application class that coordinates the calls to view and Controller
- *@version 1.0
+ *@version 1.1
  *@author Kyle Gendron
  *
  *
