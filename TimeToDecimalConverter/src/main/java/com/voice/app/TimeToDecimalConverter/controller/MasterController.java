@@ -43,7 +43,7 @@ public class MasterController implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()){
-			case "Convert All":	int returnVal = fileChooser.showOpenDialog(view.getConvertAllButton());
+			case "Convert One":	int returnVal = fileChooser.showOpenDialog(view.getConvertOneButton());
 								if(returnVal == JFileChooser.APPROVE_OPTION){
 									File file = fileChooser.getSelectedFile();
 									//TODO: process file using TimeToDecimalConverter
