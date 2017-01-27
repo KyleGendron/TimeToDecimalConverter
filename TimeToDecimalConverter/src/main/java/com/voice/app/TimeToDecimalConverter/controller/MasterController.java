@@ -8,6 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.voice.app.TimeToDecimalConverter.util.TimeToDecimalConverter;
+import com.voice.app.TimeToDecimalConverter.view.ConvertAllView;
 import com.voice.app.TimeToDecimalConverter.view.MasterView;
 
 /**
@@ -54,6 +55,11 @@ public class MasterController implements ActionListener{
 									else
 										JOptionPane.showMessageDialog(view, "Unable to convert!");
 								}
+								break;
+			case "Convert All":	ConvertAllController subController = new ConvertAllController(view);
+								view.addConvertAllMenu(subController);
+								//process
+								//once finished, remove these components and repack
 								break;
 			case "Exit":		System.exit(0);
 						 		break;

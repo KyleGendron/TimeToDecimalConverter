@@ -15,7 +15,7 @@ import com.voice.app.TimeToDecimalConverter.controller.ConvertAllController;
 
 public class ConvertAllView extends JPanel implements ListSelectionListener {
 	ConvertAllController controller;
-	JButton removeButton;
+	JButton addButton;
 
 	/**
 	 * Default Constructor
@@ -43,19 +43,57 @@ public class ConvertAllView extends JPanel implements ListSelectionListener {
 		descConstraints.gridy = 0;
 		descConstraints.fill = GridBagConstraints.HORIZONTAL;
 		descConstraints.weightx = 1;
+		descConstraints.gridwidth = 4;
 		add(description, descConstraints);
 		
 		//create, constrain, and add the List
 		JList fileList = new JList(new DefaultListModel());
 		GridBagConstraints listConstraints = new GridBagConstraints();
+		listConstraints.gridx = 0;
+		listConstraints.gridy = 1;
+		listConstraints.fill = GridBagConstraints.HORIZONTAL;
+		listConstraints.weightx = 1;
+		listConstraints.ipady = 80;
+		listConstraints.gridwidth = 4;
+		add(fileList, listConstraints);
 		
 		//create, constrain, and add the add button
+		addButton = new JButton("Add");
+		GridBagConstraints addButtonConstraints = new GridBagConstraints();
+		addButtonConstraints.gridx = 0;
+		addButtonConstraints.gridy = 2;
+		addButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+		addButtonConstraints.weightx = 0.5;
+		add(addButton, addButtonConstraints);
 		
 		//create, constrain, and add the remove button
+		JButton removeButton = new JButton("Remove");
+		GridBagConstraints removeButtonConstraints = new GridBagConstraints();
+		removeButtonConstraints.gridx = 1;
+		removeButtonConstraints.gridy = 2;
+		removeButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+		removeButtonConstraints.weightx = 0.5;
+		add(removeButton, removeButtonConstraints);
 		
 		//create, constrain, and add the cancel button
+		JButton cancelButton = new JButton("Cancel");
+		GridBagConstraints cancelButtonConstraints = new GridBagConstraints();
+		cancelButtonConstraints.gridx = 2;
+		cancelButtonConstraints.gridy = 2;
+		cancelButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+		cancelButtonConstraints.weightx = 0.5;
+		add(cancelButton, cancelButtonConstraints);
 		
 		//create, constrain, and add the process button
+		JButton processButton = new JButton("Process");
+		GridBagConstraints processButtonConstraints = new GridBagConstraints();
+		processButtonConstraints.gridx = 3;
+		processButtonConstraints.gridy = 2;
+		processButtonConstraints.fill = GridBagConstraints.HORIZONTAL;
+		processButtonConstraints.weightx = 0.5;
+		add(processButton, processButtonConstraints);
+		
+		setVisible(true);
 	}
 	
 	@Override
