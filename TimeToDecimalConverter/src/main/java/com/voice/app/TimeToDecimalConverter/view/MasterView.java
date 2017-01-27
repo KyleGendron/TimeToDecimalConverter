@@ -20,7 +20,8 @@ import com.voice.app.TimeToDecimalConverter.controller.MasterController;
 @SuppressWarnings("serial")
 public class MasterView extends JFrame{
 	MasterController controller;
-	JButton convertOneButton;
+	ConvertAllView subView;
+	JButton convertOneButton, convertAllButton;
 	JPanel bottomPanel;
 
 	/**
@@ -68,7 +69,7 @@ public class MasterView extends JFrame{
 		convertOneButton.addActionListener(controller);
 
 		//create convert all button
-		JButton convertAllButton = new JButton("Convert All");
+		convertAllButton = new JButton("Convert All");
 		convertAllButton.setVerticalTextPosition(JButton.CENTER);
 		convertAllButton.setHorizontalTextPosition(JButton.CENTER);
 		convertAllButton.addActionListener(controller);
@@ -120,11 +121,22 @@ public class MasterView extends JFrame{
 		return convertOneButton;
 	}
 
-	//TODO: create method for adding ConvertAllView
+	/**
+	 * Helper method for creating and displaying the
+	 * convert all submenu below the main menu.
+	 * @param subController the convert all controller the
+	 * subscribes to the convert all view.
+	 */
 	public void addConvertAllMenu(ConvertAllController subController){
-		ConvertAllView subView = new ConvertAllView(subController);
 		bottomPanel = new JPanel();
-		bottomPanel.add(subView);
+		
+		//maintain a lazy form of initialization using a dynamic singleton model
+		if(subView != null)
+			bottomPanel.add(subView);
+		else{
+			subView = new ConvertAllView(subController);
+			bottomPanel.add(subView);
+		}	
 		
 		//specify bottom panel constraints and add
 		GridBagConstraints bottomConstraints = new GridBagConstraints();
@@ -138,5 +150,42 @@ public class MasterView extends JFrame{
 		
 		pack();
 		repaint();
+	}
+	
+	/**
+	 * Helper method for removing the convert all
+	 * submenu and repacking/repainting the main frame.
+	 */
+	public void removeConvertAllMenu(){
+		remove(bottomPanel);
+		revalidate();
+		pack();
+		repaint();
+	}
+	
+	/**
+	 * Returns the ConvertAllView associated with this MasterView
+	 * @return subView the ConvertAllView from this MasterView
+	 */
+	public ConvertAllView getConvertAllView(){
+		return subView;
+	}
+	
+	/**
+	 * Helper method disables main menu
+	 * buttons, minus the exit button
+	 */
+	public void disableButtons(){
+		convertOneButton.setEnabled(false);
+		convertAllButton.setEnabled(false);
+	}
+	
+	/**
+	 * Helper method enables main menu
+	 * buttons, minus the exit button
+	 */
+	public void enableButtons(){
+		convertOneButton.setEnabled(true);
+		convertAllButton.setEnabled(true);
 	}
 }

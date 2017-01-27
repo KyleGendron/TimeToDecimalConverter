@@ -44,7 +44,8 @@ public class MasterController implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()){
-			case "Convert One":	int returnVal = fileChooser.showOpenDialog(view.getConvertOneButton());
+			case "Convert One":	view.disableButtons();
+								int returnVal = fileChooser.showOpenDialog(view.getConvertOneButton());
 								if(returnVal == JFileChooser.APPROVE_OPTION){
 									File file = fileChooser.getSelectedFile();
 									//TODO: process file using TimeToDecimalConverter
@@ -53,10 +54,13 @@ public class MasterController implements ActionListener{
 									if(result)
 										JOptionPane.showMessageDialog(view, "Successfully converted!");
 									else
-										JOptionPane.showMessageDialog(view, "Unable to convert!");
+										JOptionPane.showMessageDialog(view, "Unable to convert "
+												+ file.getName() + "!  Only able to convert .csv files.");
 								}
+								view.enableButtons();
 								break;
-			case "Convert All":	ConvertAllController subController = new ConvertAllController(view);
+			case "Convert All":	view.disableButtons();
+								ConvertAllController subController = new ConvertAllController(view);
 								view.addConvertAllMenu(subController);
 								//process
 								//once finished, remove these components and repack
