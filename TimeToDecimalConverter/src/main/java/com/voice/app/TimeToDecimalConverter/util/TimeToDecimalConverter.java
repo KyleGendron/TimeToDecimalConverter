@@ -39,7 +39,7 @@ public class TimeToDecimalConverter {
 				for(int h = 0; h < lines.length; h++){
 					String[] elements = lines[h].split(",");
 					for(int i = 0; i < elements.length; i++){
-						if(elements[i].matches("[0-9]{1,2}:[0-9]{2}:[0-9]{2}")){
+						if(elements[i].matches("[0-9]+:[0-9]{2}:[0-9]{2}")){
 							//split the element into its numerical parts
 							String[] numbers = elements[i].split(":");
 							//add them together
