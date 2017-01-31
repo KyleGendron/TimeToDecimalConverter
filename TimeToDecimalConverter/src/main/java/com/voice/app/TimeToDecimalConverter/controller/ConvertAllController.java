@@ -49,16 +49,20 @@ public class ConvertAllController implements ActionListener{
 								masterView.removeConvertAllMenu();
 								masterView.enableButtons();
 								break;
-			case "Process":		for(File f: files){
-									TimeToDecimalConverter converter = new TimeToDecimalConverter(f);
-									boolean result = converter.processFile();
-									if(!result)
-										JOptionPane.showMessageDialog(masterView, "Unable to convert"
-												+ f.getName() + "!  Only able to convert .csv files.");
+			case "Process":		if(!files.isEmpty()){
+									for(File f: files){
+										TimeToDecimalConverter converter = new TimeToDecimalConverter(f);
+										boolean result = converter.processFile();
+										if(!result)
+											JOptionPane.showMessageDialog(masterView, "Unable to convert"
+													+ f.getName() + "!  Only able to convert .csv files.");
+									}
+									JOptionPane.showMessageDialog(masterView, "File processing completed!");
+									masterView.getConvertAllView().clearList();
+									files.clear();
+								}else{
+									JOptionPane.showMessageDialog(masterView, "No Files Selected!");
 								}
-								JOptionPane.showMessageDialog(masterView, "File processing completed!");
-								masterView.getConvertAllView().clearList();
-								files.clear();
 								masterView.removeConvertAllMenu();
 								masterView.enableButtons();
 								break;
