@@ -13,6 +13,9 @@ import com.voice.app.TimeToDecimalConverter.view.MasterView;
 
 /**
  * 
+ * Controller meant to listen for actions recorded in
+ * the sub-menu for a convert-all user story.
+ * 
  * @author Kyle Gendron
  *
  */

@@ -1,0 +1,4 @@
+com.voice.app.TimeToDecimalConverter
+com.voice.app.TimeToDecimalConverter.controller
+com.voice.app.TimeToDecimalConverter.util
+com.voice.app.TimeToDecimalConverter.view
