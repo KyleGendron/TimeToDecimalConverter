@@ -14,3 +14,5 @@ It's only dependency is on JUnit 4.8.2.
   * Other types of time formats do exist, but for the scope of this program (and my use of it), only the one is used.  Other types
     could be planned for in the future.
   * Other file types may be feasible, but I have yet to consider them.
+  
+## Current Status:  V1.3 Released, V1.4 On Hold
